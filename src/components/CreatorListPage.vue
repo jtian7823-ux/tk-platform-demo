@@ -7,15 +7,19 @@
         <div class="creator-page">
             <article
                 class="creator-page-item"
-                v-for="(creator,index) in creators"
-                :key="creator.newsTitle"
+                v-for="(creator, index) in pagedCreators"
+                :key="creator.id || creator.name"
             >
-                <router-link class="creator-link" to="/creator">
-                    <div class="member-img">
-                        <img :src="creator.img" :alt="creator.name" />
-                        <div class="counter" v-if="index <= 5" >{{ index + 1 }}</div>
+                <router-link class="creator-link" :to="`/creator?id=${creator.id}`">
+                    <div class="member-img" style="position:relative;">
+                        <img :src="creator.avatar || creator.img || '/Image/Creator_01.webp'" :alt="creator.nickname || creator.name" />
+                        <div class="counter" v-if="(currentPage-1)*12 + index < 6">{{ (currentPage-1)*12 + index + 1 }}</div>
+                        <div v-if="creator.is_live" class="live-badge">LIVE</div>
                     </div>
-                    <div class="member-name">{{ creator.name }}</div>
+                    <div class="member-name">{{ creator.nickname || creator.name }}</div>
+                    <div v-if="creator.follower_count" style="font-size:11px;color:var(--tk-text-muted,#5A5470);">
+                        {{ (creator.follower_count/1000).toFixed(1) }}K followers
+                    </div>
                 </router-link>
             </article>
         </div>
@@ -62,66 +66,27 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import '../assets/css/style.css'
+import { useCreatorStore } from '../stores/creator'
 
-const props = defineProps({
-    totalPages: {
-        type: Number,
-        required: true,
-    },
-    modelValue: {
-        type: Number,
-        default: 1,
-    },
+const creatorStore = useCreatorStore()
+const currentPage = ref(1)
+const pageSize = 12
+
+const totalPages = computed(() => Math.ceil(creatorStore.creatorList.length / pageSize) || 1)
+const pages = computed(() => Array.from({ length: totalPages.value }, (_, i) => i + 1))
+
+const pagedCreators = computed(() => {
+    const start = (currentPage.value - 1) * pageSize
+    return creatorStore.creatorList.slice(start, start + pageSize)
 })
 
-const emit = defineEmits(['update:modelValue'])
+const goPage = (p) => { if (p >= 1 && p <= totalPages.value) currentPage.value = p }
+const goPrev = () => { if (currentPage.value > 1) currentPage.value-- }
+const goNext = () => { if (currentPage.value < totalPages.value) currentPage.value++ }
 
-const currentPage = computed({
-    get: () => props.modelValue,
-    set: (val) => emit('update:modelValue', val),
+onMounted(async () => {
+    if (creatorStore.creatorList.length === 0) await creatorStore.fetchCreators({ limit: 50 })
 })
-
-const pages = computed(() => {
-    return Array.from({ length: props.totalPages }, (_, i) => i + 1)
-})
-
-const goPage = (page) => {
-    if (page < 1 || page > props.totalPages) return
-    currentPage.value = page
-}
-
-const goPrev = () => {
-    if (currentPage.value > 1) {
-        currentPage.value -= 1
-    }
-}
-
-const goNext = () => {
-    if (currentPage.value < props.totalPages) {
-        currentPage.value += 1
-    }
-}
-
-const creators = [
-    { img: '/Image/Creator_01.webp', name: 'creator-01' },
-    { img: '/Image/Creator_02.webp', name: 'creator-02' },
-    { img: '/Image/Creator_03.webp', name: 'creator-03' },
-    { img: '/Image/Creator_04.webp', name: 'creator-04' },
-    { img: '/Image/Creator_05.webp', name: 'creator-05' },
-    { img: '/Image/Creator_06.webp', name: 'creator-06' },
-    { img: '/Image/Creator_01.webp', name: 'creator-07' },
-    { img: '/Image/Creator_02.webp', name: 'creator-08' },
-    { img: '/Image/Creator_03.webp', name: 'creator-09' },
-    { img: '/Image/Creator_04.webp', name: 'creator-10' },
-    { img: '/Image/Creator_05.webp', name: 'creator-11' },
-    { img: '/Image/Creator_06.webp', name: 'creator-12' },
-    { img: '/Image/Creator_01.webp', name: 'creator-13' },
-    { img: '/Image/Creator_02.webp', name: 'creator-14' },
-    { img: '/Image/Creator_03.webp', name: 'creator-15' },
-    { img: '/Image/Creator_04.webp', name: 'creator-16' },
-    { img: '/Image/Creator_05.webp', name: 'creator-17' },
-    { img: '/Image/Creator_06.webp', name: 'creator-18' },
-]
 </script>

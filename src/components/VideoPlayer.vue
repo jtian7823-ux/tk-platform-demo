@@ -106,15 +106,14 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
+import Hls from 'hls.js'
 import '../assets/css/style.css'
 
 // 🔹 接收外層傳進來的 video 資料
 const props = defineProps({
-    video: {
-        type: Object,
-        required: true,
-    },
+    video: { type: Object, required: true },
+    hlsUrl: { type: String, default: null },
 })
 
 // 讓 template 可以用 clips.xxx
@@ -125,6 +124,34 @@ const isPlaying = ref(false)
 const isMuted = ref(false)
 const currentTime = ref(0)
 const duration = ref(0)
+let hlsInstance = null
+
+// HLS setup
+onMounted(() => {
+    const src = props.hlsUrl || props.video?.videoSrc
+    if (!src) return
+    const el = videoRef.value
+    if (!el) return
+
+    if (src.includes('.m3u8') && Hls.isSupported()) {
+        hlsInstance = new Hls({ lowLatencyMode: true })
+        hlsInstance.loadSource(src)
+        hlsInstance.attachMedia(el)
+        hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
+            el.play().catch(() => {})
+            isPlaying.value = true
+        })
+    } else if (el.canPlayType('application/vnd.apple.mpegurl')) {
+        el.src = src
+        el.addEventListener('loadedmetadata', () => el.play())
+    } else {
+        el.src = src
+    }
+})
+
+onUnmounted(() => {
+    if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null }
+})
 
 const volume = ref(1)
 const previousVolume = ref(1)

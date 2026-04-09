@@ -1,0 +1,505 @@
+/* ================================================
+   TK Platform — Thai Cultural Theme
+   Design: Bigo Live / TikTok Live Thai Edition
+   Palette: Gold (#D4AF37) + Deep Red (#8B1A1A) + Night Black (#0A0A12)
+   Font: Sarabun (Thai) + Inter (Latin)
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Root Variables Override ── */
+:root,
+:root[data-theme=a],
+:root[data-theme=b] {
+  font-family: 'Sarabun', 'Inter', system-ui, sans-serif;
+
+  /* Core palette */
+  --tk-black:       #0A0A12;
+  --tk-black2:      #12121E;
+  --tk-black3:      #1A1A2E;
+  --tk-card-bg:     #16162A;
+  --tk-border:      rgba(212, 175, 55, 0.2);
+
+  /* Gold system */
+  --tk-gold:        #D4AF37;
+  --tk-gold-light:  #FFD700;
+  --tk-gold-dim:    rgba(212, 175, 55, 0.15);
+  --tk-gold-glow:   0 0 20px rgba(212, 175, 55, 0.4);
+
+  /* Red system */
+  --tk-red:         #C0392B;
+  --tk-red-light:   #FF6B6B;
+  --tk-red-glow:    0 0 16px rgba(192, 57, 43, 0.5);
+
+  /* Live badge */
+  --tk-live:        #FF3B30;
+
+  /* Text */
+  --tk-text:        #F0EDE4;
+  --tk-text-dim:    #A09880;
+  --tk-text-muted:  #5A5470;
+
+  /* Override existing vars */
+  --header-bg:           var(--tk-black);
+  --header-color:        var(--tk-text);
+  --header-color-active: var(--tk-gold);
+  --custom-color-1:      var(--tk-gold);
+  --custom-color-2:      var(--tk-gold-light);
+
+  background-color: var(--tk-black);
+  color: var(--tk-text);
+}
+
+/* ── Global Base ── */
+html, body {
+  background: var(--tk-black);
+  color: var(--tk-text);
+}
+
+#app {
+  background: var(--tk-black);
+}
+
+a { color: var(--tk-gold); }
+a:hover { color: var(--tk-gold-light); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--tk-black2); }
+::-webkit-scrollbar-thumb { background: var(--tk-gold-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--tk-gold); }
+
+/* ── Header Redesign ── */
+.header .inner {
+  background: rgba(10, 10, 18, 0.95) !important;
+  border-bottom: 1px solid var(--tk-border) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header .inner.scroll {
+  background: rgba(10, 10, 18, 0.98) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6) !important;
+}
+
+/* Logo text glow */
+.header .inner .inner-left .logo-link .logo {
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+}
+
+/* Nav links */
+.header .inner .inner-left .nav a {
+  color: var(--tk-text-dim) !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+}
+.header .inner .inner-left .nav a:hover,
+.header .inner .inner-left .nav a.active {
+  color: var(--tk-gold) !important;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+/* Search bar */
+.header .inner .inner-right form input {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+  color: var(--tk-text) !important;
+  border-radius: 24px !important;
+}
+.header .inner .inner-right form input:focus {
+  border-color: var(--tk-gold) !important;
+  box-shadow: 0 0 0 3px var(--tk-gold-dim) !important;
+}
+
+/* Login / Signup buttons */
+.header .inner .inner-right .btn-group .login-btn {
+  background: transparent !important;
+  border: 1.5px solid var(--tk-gold) !important;
+  color: var(--tk-gold) !important;
+  border-radius: 24px !important;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.header .inner .inner-right .btn-group .login-btn:hover {
+  background: var(--tk-gold-dim) !important;
+}
+
+.header .inner .inner-right .btn-group .signup-btn {
+  background: linear-gradient(135deg, var(--tk-gold) 0%, #B8960C 100%) !important;
+  color: #0A0A12 !important;
+  border-radius: 24px !important;
+  font-weight: 700;
+  box-shadow: var(--tk-gold-glow);
+  transition: all 0.2s;
+}
+.header .inner .inner-right .btn-group .signup-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.6);
+}
+
+/* ── Tag nav (horizontal scroll) ── */
+.tag-nav-swiper .swiper-slide a,
+.tag-nav-swiper .swiper-slide button,
+.tag-btn {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+  color: var(--tk-text-dim) !important;
+  border-radius: 20px !important;
+  transition: all 0.2s !important;
+}
+.tag-nav-swiper .swiper-slide a.active,
+.tag-btn.active {
+  background: var(--tk-gold-dim) !important;
+  border-color: var(--tk-gold) !important;
+  color: var(--tk-gold) !important;
+}
+
+/* ── Creator List Section ── */
+.creator-list {
+  background: linear-gradient(180deg, var(--tk-black2) 0%, var(--tk-black) 100%) !important;
+  border-top: 1px solid var(--tk-border) !important;
+  border-bottom: 1px solid var(--tk-border) !important;
+}
+
+.creator-list .title {
+  color: var(--tk-text) !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.creator-list .title .brand {
+  background: linear-gradient(135deg, var(--tk-gold-light), var(--tk-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.creator-link .member-img {
+  position: relative;
+  border-radius: 50%;
+  overflow: visible !important;
+}
+.creator-link .member-img img {
+  border: 2.5px solid var(--tk-border) !important;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.creator-link:hover .member-img img {
+  border-color: var(--tk-gold) !important;
+  box-shadow: var(--tk-gold-glow);
+  transform: scale(1.06);
+}
+.creator-link .member-name {
+  color: var(--tk-text-dim) !important;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.creator-link:hover .member-name {
+  color: var(--tk-gold) !important;
+}
+
+/* LIVE badge */
+.live-badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tk-live);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.7);
+  animation: live-pulse 1.8s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(255,59,48,0.6); }
+  50% { box-shadow: 0 0 16px rgba(255,59,48,0.9); }
+}
+
+/* Counter badge */
+.creator-link .counter {
+  background: linear-gradient(135deg, var(--tk-gold), #B8960C) !important;
+  color: #0A0A12 !important;
+  font-weight: 800;
+}
+
+/* See All button */
+.see-all-btn {
+  color: var(--tk-gold) !important;
+  border: 1px solid var(--tk-border) !important;
+  border-radius: 20px !important;
+  background: var(--tk-gold-dim) !important;
+  transition: all 0.2s;
+}
+.see-all-btn:hover {
+  background: var(--tk-gold) !important;
+  color: #0A0A12 !important;
+}
+
+/* ── Card System ── */
+.clips-card {
+  background: var(--tk-card-bg) !important;
+  border: 1px solid var(--tk-border) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: all 0.25s !important;
+}
+.clips-card:hover {
+  border-color: var(--tk-gold) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), var(--tk-gold-glow) !important;
+}
+
+.card-header {
+  background: transparent !important;
+}
+
+.creator-name {
+  color: var(--tk-text-dim) !important;
+  font-weight: 500;
+}
+
+.clips-title {
+  color: var(--tk-text) !important;
+  font-weight: 600;
+}
+
+/* Diamond / price badges */
+.diamond-num, .money-num {
+  color: var(--tk-gold) !important;
+}
+
+/* Favorite button */
+.favorite-btn {
+  background: rgba(0,0,0,0.5) !important;
+  backdrop-filter: blur(4px);
+  border-radius: 50% !important;
+  border: 1px solid var(--tk-border) !important;
+  transition: all 0.2s !important;
+}
+.favorite-btn:hover {
+  background: var(--tk-red) !important;
+  border-color: var(--tk-red-light) !important;
+  box-shadow: var(--tk-red-glow) !important;
+}
+
+/* ── Section Titles ── */
+.title-box h1, .title-box h2, .title-box h3 {
+  color: var(--tk-text) !important;
+  font-weight: 700;
+  position: relative;
+}
+.title-box h1::before, .title-box h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: linear-gradient(180deg, var(--tk-gold-light), var(--tk-gold));
+  border-radius: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+  box-shadow: 0 0 8px rgba(212,175,55,0.6);
+}
+.title-box a {
+  color: var(--tk-gold) !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── Pagination ── */
+.pagination-bar .pager {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+  color: var(--tk-text-dim) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s !important;
+}
+.pagination-bar .pager.active,
+.pagination-bar .pager:hover:not(:disabled) {
+  background: var(--tk-gold-dim) !important;
+  border-color: var(--tk-gold) !important;
+  color: var(--tk-gold) !important;
+}
+
+/* ── Footer ── */
+footer, .footer {
+  background: var(--tk-black2) !important;
+  border-top: 1px solid var(--tk-border) !important;
+}
+
+/* ── Main Section (Hero area) ── */
+.main-section, .main-content {
+  background: linear-gradient(180deg, var(--tk-black3) 0%, var(--tk-black) 60%) !important;
+}
+
+/* ── Video Section ── */
+.video-section {
+  background: var(--tk-black) !important;
+}
+
+/* ── Hot Girls / Swiper sections ── */
+.hot-girls, .popular-clips, .av-section, .clips-section {
+  background: var(--tk-black) !important;
+}
+
+/* ── Swiper navigation arrows ── */
+.swiper-button-next, .swiper-button-prev {
+  color: var(--tk-gold) !important;
+  background: rgba(10,10,18,0.8) !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: 1px solid var(--tk-border) !important;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 14px !important;
+}
+
+/* ── Mode Toggle ── */
+.mode-btn {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+  color: var(--tk-text-dim) !important;
+  border-radius: 24px !important;
+}
+.mode-btn.active {
+  background: var(--tk-gold-dim) !important;
+  border-color: var(--tk-gold) !important;
+  color: var(--tk-gold) !important;
+}
+
+/* ── Member / Creator Toggle button ── */
+.theme-toggle__track {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+}
+.theme-toggle__thumb {
+  background: var(--tk-gold) !important;
+  box-shadow: var(--tk-gold-glow) !important;
+}
+
+/* ── Forms & Modals ── */
+.modal-content, .base-modal {
+  background: var(--tk-black2) !important;
+  border: 1px solid var(--tk-border) !important;
+  border-radius: 16px !important;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+  background: var(--tk-black3) !important;
+  border: 1px solid var(--tk-border) !important;
+  color: var(--tk-text) !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  transition: all 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--tk-gold) !important;
+  box-shadow: 0 0 0 3px var(--tk-gold-dim) !important;
+}
+input::placeholder { color: var(--tk-text-muted) !important; }
+
+/* Primary action buttons */
+button[class*="submit"], button[class*="confirm"], button[class*="primary"],
+.btn-primary, .buy-btn, .topup-btn {
+  background: linear-gradient(135deg, var(--tk-gold) 0%, #B8960C 100%) !important;
+  color: #0A0A12 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  box-shadow: var(--tk-gold-glow) !important;
+  transition: all 0.2s !important;
+}
+
+/* ── Creator Apply page ── */
+.become-creator, .apply-creator {
+  background: linear-gradient(135deg, var(--tk-black2), var(--tk-black3)) !important;
+  border: 1px solid var(--tk-border) !important;
+  border-radius: 16px !important;
+}
+
+/* ── Member Profile ── */
+.member-profile, .member-page {
+  background: var(--tk-black) !important;
+}
+
+/* ── Income / Withdrawal ── */
+.income-statement, .withdrawal {
+  background: var(--tk-black) !important;
+}
+
+.income-card, .stat-card {
+  background: var(--tk-card-bg) !important;
+  border: 1px solid var(--tk-border) !important;
+  border-radius: 12px !important;
+}
+
+/* ── Live Room specific ── */
+.live-room {
+  background: var(--tk-black) !important;
+}
+
+.live-viewer-count {
+  color: var(--tk-red-light) !important;
+  font-weight: 700;
+}
+
+/* ── Upload Page ── */
+.upload-area {
+  background: var(--tk-black3) !important;
+  border: 2px dashed var(--tk-border) !important;
+  border-radius: 16px !important;
+  transition: all 0.2s;
+}
+.upload-area:hover {
+  border-color: var(--tk-gold) !important;
+  background: var(--tk-gold-dim) !important;
+}
+
+/* ── Search Results ── */
+.search-result {
+  background: var(--tk-black) !important;
+}
+
+/* ── Thai decorative touches ── */
+/* Gold shimmer animation on highlighted elements */
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.creator-list .title .brand {
+  background: linear-gradient(90deg, var(--tk-gold), var(--tk-gold-light), var(--tk-gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+/* Thai lotus-inspired card accent */
+.clips-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--tk-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.clips-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .header .inner .inner-right .btn-group .login-btn,
+  .header .inner .inner-right .btn-group .signup-btn {
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+  }
+}

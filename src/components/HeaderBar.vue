@@ -42,15 +42,20 @@
                 </form>
 
                 <div class="btn-group login">
-                    <button class="login-btn" type="button" @click="showLogin = true">Login</button>
-                    <button class="signup-btn" type="button" @click="showSignup = true">Sign Up</button>
-                    <button class="member-btn" type="button"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" /></button>
-                    <button class="member-btn member-menu" type="button" @click="showMemberMenu = true">
-                        <img :src="theme === 'b' ? '/Home/Icon_member_gary.webp' : '/Home/Icon_member_green.webp'" alt="" />
-                    </button>
-                    <button class="member-btn none" type="button" @click="showPurchase = true">
-                        <img :src="theme === 'b' ? '/Home/Icon_topup_diamond_dark.webp' : '/Home/Icon_topup_diamond.webp'" alt="" />
-                    </button>
+                    <template v-if="!authStore.isLoggedIn">
+                        <button class="login-btn" type="button" @click="showLogin = true">Login</button>
+                        <button class="signup-btn" type="button" @click="showSignup = true">Sign Up</button>
+                    </template>
+                    <template v-else>
+                        <span class="coin-badge">💎 {{ authStore.coinBalance }}</span>
+                        <button class="member-btn" type="button"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" /></button>
+                        <button class="member-btn member-menu" type="button" @click="showMemberMenu = true">
+                            <img :src="authStore.user?.avatar || '/Home/Icon_member_green.webp'" alt="" style="border-radius:50%;width:28px;height:28px;object-fit:cover;" />
+                        </button>
+                        <button class="member-btn none" type="button" @click="showPurchase = true">
+                            <img :src="theme === 'b' ? '/Home/Icon_topup_diamond_dark.webp' : '/Home/Icon_topup_diamond.webp'" alt="" />
+                        </button>
+                    </template>
                 </div>
             </div>
         </div>
@@ -183,8 +188,10 @@
 
                         <div class="member-menu-group">
                             <div class="separator"><i></i></div>
-                            <a href="#" class="member-menu-item"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" />Log Out</a>
-                            <a href="#" class="member-menu-item"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" />Language</a>
+                            <button type="button" class="member-menu-item" @click="handleLogout">
+                                <img :src="theme === 'b' ? '/Logo&Icon/Member/Icon_logout_gary.webp' : '/Logo&Icon/Member/Icon_logout.webp'" alt="" />Log Out
+                            </button>
+                            <a href="#" class="member-menu-item"><img :src="theme === 'b' ? '/Logo&Icon/Member/Icon_language_gary.webp' : '/Logo&Icon/Member/Icon_language.webp'" alt="" />Language</a>
                         </div>
 
                         <button class="close-btn" type="button" @click="showMemberMenu = false">
@@ -210,6 +217,9 @@ import BaseModal from './BaseModal.vue'
 import WarningModal from './WarningModal.vue'
 import Modal from './Modal.vue'
 import { getMode, setMode } from '../stores/mode'
+import { useAuthStore } from '../stores/auth'
+
+const authStore = useAuthStore()
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -301,14 +311,37 @@ watch(showPurchase, (v) => {
     }
 })
 
+// Login form state
+const loginEmail = ref('')
+const loginPassword = ref('')
+const loginError = ref('')
+const signupEmail = ref('')
+const signupPassword = ref('')
+
 // handlers
-const handleLogin = () => {
-    console.log('login submit')
-    showLogin.value = false
+const handleLogin = async (e) => {
+    loginError.value = ''
+    const form = e.target
+    const email = form.querySelector('input[type="email"]').value
+    const password = form.querySelector('input[type="password"]').value
+    const ok = await authStore.login(email, password)
+    if (ok) {
+        showLogin.value = false
+    } else {
+        loginError.value = authStore.error || 'Login failed'
+    }
 }
-const handleSignup = () => {
-    console.log('signup submit')
-    showSignup.value = false
+const handleSignup = async (e) => {
+    const form = e.target
+    const email = form.querySelector('input[type="email"]').value
+    const password = form.querySelector('input[type="password"]').value
+    const ok = await authStore.register({ email, password, username: email.split('@')[0] })
+    if (ok) showSignup.value = false
+}
+
+const handleLogout = () => {
+    authStore.logout()
+    showMemberMenu.value = false
 }
 
 // ✅ 任何彈窗開啟就鎖住 body scroll

@@ -34,6 +34,7 @@ import UploadPage from '../pages/upload.vue'
 import UploadShortPage from '../pages/upload-short.vue'
 import UploadVideoPage from '../pages/upload-video.vue'
 import ApplyCreatorPage from '../pages/apply-creator.vue'
+import LiveRoomPage from '../pages/live-room.vue'
 
 // 定義路由對應關係
 const routes = [
@@ -68,6 +69,7 @@ const routes = [
     { path: '/upload-short', name: 'Upload Short', component: UploadShortPage, meta: { requireMode: 'creator' } },
     { path: '/upload-video', name: 'Upload Video', component: UploadVideoPage, meta: { requireMode: 'creator' } },
     { path: '/apply-creator', name: 'Apply Creator', component: ApplyCreatorPage },
+    { path: '/live-room', name: 'Live Room', component: LiveRoomPage },
 ]
 
 // 建立 router 實例
