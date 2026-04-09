@@ -1,5 +1,5 @@
 // src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { getMode } from '../stores/mode'
 
 // 匯入你的頁面（待會我們會建立這些）
@@ -72,7 +72,7 @@ const routes = [
 
 // 建立 router 實例
 export const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 })
 
