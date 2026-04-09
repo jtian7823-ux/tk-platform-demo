@@ -50,18 +50,18 @@ import '../assets/css/style.css'
 const modules = [Navigation, Pagination, Autoplay, A11y]
 
 const avs = [
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator01', avCover: '/Image/AV_01.webp', avTitle: 'av title test test test', avView: '1585', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator02', avCover: '/Image/AV_02.webp', avTitle: 'av title test test test', avView: '585', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator08', avCover: '/Image/AV_03.webp', avTitle: 'av title test test test', avView: '85', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator06', avCover: '/Image/AV_01.webp', avTitle: 'av title test test test', avView: '185', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator07', avCover: '/Image/AV_02.webp', avTitle: 'av title test test test', avView: '1515', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator02', avCover: '/Image/AV_03.webp', avTitle: 'av title test test test', avView: '1005', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator05', avCover: '/Image/AV_01.webp', avTitle: 'av title test test test', avView: '1455', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator12', avCover: '/Image/AV_02.webp', avTitle: 'av title test test test', avView: '585', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator35', avCover: '/Image/AV_03.webp', avTitle: 'av title test test test', avView: '85', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator10', avCover: '/Image/AV_01.webp', avTitle: 'av title test test test', avView: '58', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator08', avCover: '/Image/AV_02.webp', avTitle: 'av title test test test', avView: '585', avUploadDate: '2025-11-19' },
-    { viedoLink: '/av-play', creatorImg: '/Home/Icon_AV.webp', creatorName: 'Creator09', avCover: '/Image/AV_03.webp', avTitle: 'av title test test test', avView: '585', avUploadDate: '2025-11-19' },
+    { viedoLink: '/play?id=1', creatorImg: 'https://i.pravatar.cc/150?img=47', creatorName: 'Namfon 💎', avCover: 'https://picsum.photos/seed/av1/320/200', avTitle: 'ความรักในคืนฝนตก 🌧️', avView: '15.8K', avUploadDate: '2025-12-01' },
+    { viedoLink: '/play?id=2', creatorImg: 'https://i.pravatar.cc/150?img=44', creatorName: 'Mintra ✨', avCover: 'https://picsum.photos/seed/av2/320/200', avTitle: 'ดวงใจกลางคืน ⭐', avView: '9.2K', avUploadDate: '2025-11-28' },
+    { viedoLink: '/play?id=3', creatorImg: 'https://i.pravatar.cc/150?img=40', creatorName: 'Praew 🌸', avCover: 'https://picsum.photos/seed/av3/320/200', avTitle: 'รักแท้ไม่มีขีดจำกัด 💕', avView: '22.1K', avUploadDate: '2025-11-25' },
+    { viedoLink: '/play?id=4', creatorImg: 'https://i.pravatar.cc/150?img=45', creatorName: 'Yui 🎀', avCover: 'https://picsum.photos/seed/av4/320/200', avTitle: 'สาวไทยหัวใจแกร่ง 🔥', avView: '7.5K', avUploadDate: '2025-11-22' },
+    { viedoLink: '/play?id=5', creatorImg: 'https://i.pravatar.cc/150?img=48', creatorName: 'Bow 👑', avCover: 'https://picsum.photos/seed/av5/320/200', avTitle: 'เสน่ห์ยามค่ำคืน 🌙', avView: '18.3K', avUploadDate: '2025-11-19' },
+    { viedoLink: '/play?id=6', creatorImg: 'https://i.pravatar.cc/150?img=41', creatorName: 'Kanya 🌺', avCover: 'https://picsum.photos/seed/av6/320/200', avTitle: 'Thai Beauty Secrets 💆', avView: '11.7K', avUploadDate: '2025-11-17' },
+    { viedoLink: '/play?id=1', creatorImg: 'https://i.pravatar.cc/150?img=49', creatorName: 'Fah 🦋', avCover: 'https://picsum.photos/seed/av7/320/200', avTitle: 'ชีวิตสวยงามเสมอ 🌈', avView: '5.9K', avUploadDate: '2025-11-14' },
+    { viedoLink: '/play?id=2', creatorImg: 'https://i.pravatar.cc/150?img=43', creatorName: 'Pim 💫', avCover: 'https://picsum.photos/seed/av8/320/200', avTitle: 'Midnight Dream 🌠', avView: '13.4K', avUploadDate: '2025-11-11' },
+    { viedoLink: '/play?id=3', creatorImg: 'https://i.pravatar.cc/150?img=46', creatorName: 'Aom 🎵', avCover: 'https://picsum.photos/seed/av9/320/200', avTitle: 'เพลงรักยามดึก 🎶', avView: '8.8K', avUploadDate: '2025-11-08' },
+    { viedoLink: '/play?id=4', creatorImg: 'https://i.pravatar.cc/150?img=42', creatorName: 'Noon 🌟', avCover: 'https://picsum.photos/seed/av10/320/200', avTitle: 'สวรรค์บนดิน Paradise 🏝️', avView: '25.6K', avUploadDate: '2025-11-05' },
+    { viedoLink: '/play?id=5', creatorImg: 'https://i.pravatar.cc/150?img=50', creatorName: 'Joy 🎊', avCover: 'https://picsum.photos/seed/av11/320/200', avTitle: 'วันที่ฉันรักคุณ 💝', avView: '16.2K', avUploadDate: '2025-11-02' },
+    { viedoLink: '/play?id=6', creatorImg: 'https://i.pravatar.cc/150?img=39', creatorName: 'Wan 🌻', avCover: 'https://picsum.photos/seed/av12/320/200', avTitle: 'Golden Hour Vibes ✨', avView: '19.0K', avUploadDate: '2025-10-30' },
 ]
 </script>
 

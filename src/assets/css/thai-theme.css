@@ -422,6 +422,66 @@ button[class*="submit"], button[class*="confirm"], button[class*="primary"],
   border-radius: 16px !important;
 }
 
+/* ── Image Cover Fix — ensure all card/cover images fill properly ── */
+.card-cover img,
+.card-cover > img,
+.clips-card .card-cover img {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.short-img img,
+.shorts-link .short-img img {
+  width: 100% !important;
+  height: 280px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  display: block !important;
+  border-radius: 12px !important;
+}
+
+.creator-img img,
+.card-header .creator-img img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--tk-gold-dim) !important;
+}
+
+/* member page banner + avatar */
+.member-banner img {
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: cover !important;
+}
+
+.member-img img,
+.creator-page-item .member-img img {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+/* AV cover cards */
+.av-video .card-cover img {
+  height: 200px !important;
+}
+
+/* news / event images */
+.news-img img,
+.event-img img {
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
 /* ── Member Profile ── */
 .member-profile, .member-page {
   background: var(--tk-black) !important;

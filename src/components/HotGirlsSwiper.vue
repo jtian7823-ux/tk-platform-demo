@@ -87,12 +87,12 @@ const clips = computed(() => {
     }
     // Fallback hardcode
     return [
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator01', clipCover: '/Image/Hot_01.webp', clipTitle: 'clip title test test test', clipFavorite: '1882', clipView: '1585', clipdiamond: '100', favorite: '0' },
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator02', clipCover: '/Image/Hot_02.webp', clipTitle: 'clip title test test test', clipFavorite: '882', clipView: '585', clipdiamond: '100', favorite: '1' },
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator08', clipCover: '/Image/Hot_03.webp', clipTitle: 'clip title test test test', clipFavorite: '1882', clipView: '85', clipdiamond: '00', favorite: '0' },
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator06', clipCover: '/Image/Hot_01.webp', clipTitle: 'clip title test test test', clipFavorite: '882', clipView: '185', clipdiamond: '100', favorite: '0' },
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator07', clipCover: '/Image/Hot_02.webp', clipTitle: 'clip title test test test', clipFavorite: '1882', clipView: '1515', clipdiamond: '900', favorite: '0' },
-        { viedoLink: '/play', creatorImg: '/Home/Icon_creator_member.webp', creatorName: 'Creator12', clipCover: '/Image/Hot_02.webp', clipTitle: 'clip title test test test', clipFavorite: '1122', clipView: '585', clipdiamond: '100', favorite: '1' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=47', creatorName: 'Namfon 💎', clipCover: 'https://picsum.photos/seed/hot1/320/200', clipTitle: 'Chat & Chill 🌙', clipFavorite: '18.8K', clipView: '15.8K', clipdiamond: '1200', favorite: '0' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=44', creatorName: 'Mintra ✨', clipCover: 'https://picsum.photos/seed/hot2/320/200', clipTitle: 'Dance Queen 💃', clipFavorite: '8.8K', clipView: '5.8K', clipdiamond: '800', favorite: '1' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=40', creatorName: 'Praew 🌸', clipCover: 'https://picsum.photos/seed/hot3/320/200', clipTitle: 'Music Live 🎵', clipFavorite: '22.1K', clipView: '18.5K', clipdiamond: '2000', favorite: '0' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=45', creatorName: 'Yui 🎀', clipCover: 'https://picsum.photos/seed/hot4/320/200', clipTitle: 'Beauty Tips 💄', clipFavorite: '7.5K', clipView: '6.2K', clipdiamond: '500', favorite: '1' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=48', creatorName: 'Bow 👑', clipCover: 'https://picsum.photos/seed/hot5/320/200', clipTitle: 'Singer Live 🎤', clipFavorite: '13.2K', clipView: '11.7K', clipdiamond: '1500', favorite: '0' },
+        { viedoLink: '/creator', creatorImg: 'https://i.pravatar.cc/150?img=41', creatorName: 'Kanya 🌺', clipCover: 'https://picsum.photos/seed/hot6/320/200', clipTitle: 'Fit & Fun 🏋️', clipFavorite: '9.9K', clipView: '8.4K', clipdiamond: '900', favorite: '1' },
     ]
 })
 
