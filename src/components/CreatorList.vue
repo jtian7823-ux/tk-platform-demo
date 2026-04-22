@@ -20,7 +20,7 @@
             </SwiperSlide>
         </Swiper>
 
-        <router-link to="/creator-list" class="see-all-btn">See All <img :src="theme === 'b' ? '/public/Home/Icon_go_white.webp' : '/public/Home/Icon_go_green.webp'" alt=""></router-link>
+        <router-link to="/creator-list" class="see-all-btn">See All <img :src="theme === 'b' ? '/Home/Icon_go_white.webp' : '/Home/Icon_go_green.webp'" alt=""></router-link>
     </section>
 </template>
 

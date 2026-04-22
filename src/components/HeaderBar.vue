@@ -42,20 +42,15 @@
                 </form>
 
                 <div class="btn-group login">
-                    <template v-if="!authStore.isLoggedIn">
-                        <button class="login-btn" type="button" @click="showLogin = true">Login</button>
-                        <button class="signup-btn" type="button" @click="showSignup = true">Sign Up</button>
-                    </template>
-                    <template v-else>
-                        <router-link to="/topup" class="coin-badge" title="儲值鑽石">💎 {{ authStore.coinBalance }}</router-link>
-                        <button class="member-btn" type="button"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" /></button>
-                        <button class="member-btn member-menu" type="button" @click="showMemberMenu = true">
-                            <img :src="authStore.user?.avatar || '/Home/Icon_member_green.webp'" alt="" style="border-radius:50%;width:28px;height:28px;object-fit:cover;" />
-                        </button>
-                        <router-link to="/topup" class="member-btn none topup-link" title="儲值">
-                            <img :src="theme === 'b' ? '/Home/Icon_topup_diamond_dark.webp' : '/Home/Icon_topup_diamond.webp'" alt="" />
-                        </router-link>
-                    </template>
+                    <button class="login-btn" type="button" @click="showLogin = true">Login</button>
+                    <button class="signup-btn" type="button" @click="showSignup = true">Sign Up</button>
+                    <button class="member-btn" type="button"><img :src="theme === 'b' ? '/Home/Icon_noti_dark.webp' : '/Home/Icon_noti.webp'" alt="" /></button>
+                    <button class="member-btn member-menu" type="button" @click="showMemberMenu = true">
+                        <img :src="theme === 'b' ? '/Home/Icon_member_gary.webp' : '/Home/Icon_member_green.webp'" alt="" />
+                    </button>
+                    <button class="member-btn none" type="button" @click="showPurchase = true">
+                        <img :src="theme === 'b' ? '/Home/Icon_topup_diamond_dark.webp' : '/Home/Icon_topup_diamond.webp'" alt="" />
+                    </button>
                 </div>
             </div>
         </div>

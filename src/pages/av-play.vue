@@ -92,7 +92,7 @@ import AppFooter from '../components/AppFooter.vue'
 import CreatorList from '../components/CreatorList.vue'
 
 const videoInner = {
-    videoSrc: '/public/file_example_MP4_1280_10MG.mp4',
+    videoSrc: '/file_example_MP4_1280_10MG.mp4',
     creatorImg: '/Home/Icon_creator_member.webp',
     creatorName: 'Creator01',
     creatorFollow: '0',

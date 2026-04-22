@@ -85,11 +85,11 @@ import 'swiper/css'
 import 'swiper/css/mousewheel'
 
 const allVideos = [
-    { id: 1, src: '/public/file_example_MP4_1280_10MG.mp4', author: 'taikip_creator', desc: 'Lorem ipsum…', likes: 123, comments: 8, shares: 3 },
-    { id: 2, src: '/public/file_example_MP4_1280_10MG.mp4', author: 'another_user', desc: 'Second video', likes: 456, comments: 16, shares: 9 },
-    { id: 3, src: '/public/file_example_MP4_1280_10MG.mp4', author: 'cool_girl', desc: 'Third video', likes: 999, comments: 32, shares: 20 },
-    { id: 4, src: '/public/file_example_MP4_1280_10MG.mp4', author: 'creator_four', desc: 'More content', likes: 77, comments: 5, shares: 2 },
-    { id: 5, src: '/public/file_example_MP4_1280_10MG.mp4', author: 'creator_five', desc: 'Last demo', likes: 88, comments: 10, shares: 4 }
+    { id: 1, src: '/file_example_MP4_1280_10MG.mp4', author: 'taikip_creator', desc: 'Lorem ipsum…', likes: 123, comments: 8, shares: 3 },
+    { id: 2, src: '/file_example_MP4_1280_10MG.mp4', author: 'another_user', desc: 'Second video', likes: 456, comments: 16, shares: 9 },
+    { id: 3, src: '/file_example_MP4_1280_10MG.mp4', author: 'cool_girl', desc: 'Third video', likes: 999, comments: 32, shares: 20 },
+    { id: 4, src: '/file_example_MP4_1280_10MG.mp4', author: 'creator_four', desc: 'More content', likes: 77, comments: 5, shares: 2 },
+    { id: 5, src: '/file_example_MP4_1280_10MG.mp4', author: 'creator_five', desc: 'Last demo', likes: 88, comments: 10, shares: 4 }
 ]
 
 const videos = ref(allVideos.slice(0, 3))
